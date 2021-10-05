@@ -17,20 +17,19 @@ const fakeUsers = [
 
 router.post("/login", async function (req, res, next) {
   const { username, password } = req.body;
-  console.log(username);
   try {
-    // FAKE SERVER DELAY, ERROR
-    await new Promise((resolve, reject) => {
-      const serverError = false;
-      if (serverError)
-        reject({
-          name: "ServerError",
-          message: "Don't worry we are fixing it, please try again later",
-        });
-      else {
-        setTimeout(resolve, 1000);
-      }
+    // FAKE REQUEST DELAY
+    await new Promise((r) => {
+      setTimeout(r, 1500);
     });
+
+    // FAKE SERVER ERROR
+    const serverError = false;
+    if (serverError)
+      reject({
+        name: "ServerError",
+        message: "Unexpected error occured, please try again later",
+      });
 
     const user = fakeUsers.find((user) => user.username === username);
 
@@ -46,14 +45,10 @@ router.post("/login", async function (req, res, next) {
         message: "Password is not correct",
       });
 
-    const token = jwt.sign(
-      { username: username, role: user.role },
-      process.env.JWT_KEY,
-      {
-        expiresIn: "5m",
-      }
-    );
-    res.status(200).json({ token: token, username: username });
+    const token = jwt.sign({ username: username }, process.env.JWT_KEY, {
+      expiresIn: "5m",
+    });
+    res.status(200).json({ token: token, role: user.role });
   } catch (error) {
     console.log({
       name: error.name,
