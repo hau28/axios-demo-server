@@ -1,1 +1,1 @@
-Axios demo, server.
+Axios demo server side
