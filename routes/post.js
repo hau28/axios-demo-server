@@ -45,7 +45,7 @@ router.get("/list", auth, async function (req, res) {
   try {
     // FAKE SERVER DELAY
     await new Promise((r) => {
-      setTimeout(r, 1500);
+      setTimeout(r, 1000);
     });
     const previews = fakePosts.map((post) => ({
       id: post.id,
@@ -72,7 +72,7 @@ router.get("/view/:id", auth, async function (req, res) {
 
     // FAKE SERVER DELAY
     await new Promise((r) => {
-      setTimeout(r, 1500);
+      setTimeout(r, 1000);
     });
 
     const post = fakePosts.find((c) => c.id === id);
@@ -101,7 +101,7 @@ router.get("/view/:id", auth, async function (req, res) {
 router.put("/edit/:id", auth, async function (req, res) {
   // FAKE SERVER DELAY
   await new Promise((r) => {
-    setTimeout(r, 1500);
+    setTimeout(r, 1000);
   });
   return res.status(204).send();
 });
@@ -109,7 +109,7 @@ router.put("/edit/:id", auth, async function (req, res) {
 router.delete("/delete/:id", auth, async function (req, res) {
   // FAKE SERVER DELAY
   await new Promise((r) => {
-    setTimeout(r, 1500);
+    setTimeout(r, 1000);
   });
   return res.status(204).send();
 });

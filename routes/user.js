@@ -20,7 +20,7 @@ router.post("/login", async function (req, res, next) {
   try {
     // FAKE REQUEST DELAY
     await new Promise((r) => {
-      setTimeout(r, 1500);
+      setTimeout(r, 1000);
     });
 
     // FAKE SERVER ERROR
