@@ -61,7 +61,7 @@ router.get("/list", auth, async function (req, res) {
   }
 });
 
-router.get("/view/:id", auth, async function (req, res) {
+router.get("/:id", auth, async function (req, res) {
   const { id } = req.params;
   try {
     if (isNaN(id))
@@ -98,7 +98,7 @@ router.get("/view/:id", auth, async function (req, res) {
   }
 });
 
-router.put("/edit/:id", auth, async function (req, res) {
+router.put("/:id", auth, async function (req, res) {
   // FAKE SERVER DELAY
   await new Promise((r) => {
     setTimeout(r, 1000);
@@ -106,7 +106,7 @@ router.put("/edit/:id", auth, async function (req, res) {
   return res.status(204).send();
 });
 
-router.delete("/delete/:id", auth, async function (req, res) {
+router.delete("/one/:id", auth, async function (req, res) {
   // FAKE SERVER DELAY
   await new Promise((r) => {
     setTimeout(r, 1000);
